@@ -1,9 +1,11 @@
-version: '2'
+version: "2"
 services:
   mysqlmaster:
     image: mysql:5.7.15
     environment:
       - "MYSQL_ROOT_PASSWORD=root"
+    ports:
+      - 4406:3306
     volumes:
       - ./data/mysql-master:/var/lib/mysql/
       - ./config/mysql-master:/etc/mysql/conf.d/
@@ -11,6 +13,8 @@ services:
     image: mysql:5.7
     environment:
       - "MYSQL_ROOT_PASSWORD=root"
+    ports:
+      - 5506:3306
     volumes:
       - ./data/mysql-slave:/var/lib/mysql/
       - ./config/mysql-slave:/etc/mysql/conf.d/
